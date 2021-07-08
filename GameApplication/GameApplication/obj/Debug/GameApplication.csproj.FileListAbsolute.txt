@@ -4,3 +4,4 @@ C:\Users\divyashree.chatra\source\repos\GameApplication\GameApplication\bin\Debu
 C:\Users\divyashree.chatra\source\repos\GameApplication\GameApplication\obj\Debug\GameApplication.csproj.CoreCompileInputs.cache
 C:\Users\divyashree.chatra\source\repos\GameApplication\GameApplication\obj\Debug\GameApplication.exe
 C:\Users\divyashree.chatra\source\repos\GameApplication\GameApplication\obj\Debug\GameApplication.pdb
+C:\Users\divyashree.chatra\source\repos\GameApplication\GameApplication\obj\Debug\GameApplication.csprojResolveAssemblyReference.cache

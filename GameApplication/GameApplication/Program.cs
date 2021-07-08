@@ -14,20 +14,20 @@ namespace GameApplication
         {
             static void Main(string[] args)
             {
+            string choice = string.Empty;
+
+            do
+            {
                 Console.WriteLine("Word Guess Game");
-
-                string message = string.Format("Enter Your Choice {0}->Basic , {1}->Intermediate ,{2}->Advanced", Options.BASIC, Options.INTERMEDIATE, Options.ADVANCED);// 1->Basic,2->Intermediate
-
-                string displayMessage = $"Enter Your Choice {(int)Options.BASIC}->Basic,{(int)Options.INTERMEDIATE}->Intermediate,{(int)Options.ADVANCED}->Advanced";
-                Console.WriteLine(displayMessage);
-                Options _choice = (Options)Int32.Parse(Console.ReadLine());
+                ConsoleInputReader inputReader = new ConsoleInputReader();
+                Options _choice = inputReader.InputReader();
                 switch (_choice)
                 {
-                    case Options.BASIC:
+                        case Options.BASIC:
                         Console.WriteLine("Basic Level");
 
                         System.Reflection.Assembly basicLevelLib =
-                         System.Reflection.Assembly.LoadFile(@"C:\Users\divyashree.chatra\source\repos\GameApplication\GameApplication\bin\Debug\BasicLevelLib.dll");
+                        System.Reflection.Assembly.LoadFile(@"C:\Users\divyashree.chatra\source\repos\GameApplication\GameApplication\bin\Debug\BasicLevelLib.dll");
 
                         System.Type basicLevelTypeClassRef = basicLevelLib.GetType("BasicLevelLib.BasicLevelType");
                         if (basicLevelTypeClassRef != null)
@@ -44,12 +44,12 @@ namespace GameApplication
                                     object result = _methodRef.Invoke(objRef, new object[] { });
                                     Console.WriteLine(result.ToString());
                                 }
-     
+
                             }
                         }
                         break;
                         case Options.INTERMEDIATE:
-                          Console.WriteLine("Intermediate Level");
+                        Console.WriteLine("Intermediate Level");
 
                         System.Reflection.Assembly intermediateLevelLib =
                         System.Reflection.Assembly.LoadFile(@"C:\Users\divyashree.chatra\source\repos\GameApplication\GameApplication\bin\Debug\IntermediateLevelLib.dll");
@@ -70,8 +70,8 @@ namespace GameApplication
                             }
                         }
                         break;
-                        case Options.ADVANCED:
-                             Console.WriteLine("Advanced Level");
+                    case Options.ADVANCED:
+                        Console.WriteLine("Advanced Level");
 
                         System.Reflection.Assembly advancedLevelLib =
                         System.Reflection.Assembly.LoadFile(@"C:\Users\divyashree.chatra\source\repos\GameApplication\GameApplication\bin\Debug\AdvancedLevelLib.dll");
@@ -86,13 +86,31 @@ namespace GameApplication
                                 System.Reflection.MethodInfo _methodRef = advancedTypeClassRef.GetMethod("Begin");
                                 if (!_methodRef.IsStatic)
                                 {
-                                    object result = _methodRef.Invoke(objRef, new object[] { "Lucas",100 });
+                                    object result = _methodRef.Invoke(objRef, new object[] { "Lucas", 100 });
                                     Console.WriteLine(result.ToString());
                                 }
                             }
                         }
-                       break;
+                        break;
+                   
+                         default:
+                        {
+                            Console.WriteLine("Invalid Choice .Please try again",_choice);
+                            break;
+                        }
                 }
+
+                        do
+                        { 
+                            Console.WriteLine("Do you want to continue - Yes or No");
+                            choice = Console.ReadLine().ToUpper();
+                            if (choice != "YES" && choice != "NO")
+                            {
+                                Console.WriteLine("Invalid choice.Please say Yes or No");
+                            }
+                        } while (choice != "YES" && choice != "NO");
+                } while (choice == "YES") ;
+            
             }
-        }
+       }
 }
